@@ -1,0 +1,77 @@
+VIEWING & FINDING RESOURCES :- 
+
+-> kubectl get pods --all -namespaces 
+-> kubectl get pods -o wide -n <name-space name> # List all pods in the current namespace, with more details
+-> kubectl get pods -n <name-space name>
+-> kubectl get nodes -n <name-space name>
+-> kubectl get services -n <name-space name>
+-> kubectl get deployments -n <name-space name>
+-> kubectl get ingress -n <name-space name>
+-> kubectl get replicasets -n <name-space name>
+=====================================================================
+
+-> kubectl describe pods <pod-name> -n <name-space name>
+-> kubectl describe nodes <pod-name> -n <name-space name>
+-> kubectl describe services <pod-name> -n <name-space name>
+-> kubectl describe deployments <pod-name> -n <name-space name>
+-> kubectl describe ingress <pod-name> -n <name-space name>
+=====================================================================
+
+-> kubectl explain pods
+
+INTERACTING WITH RUNNING PODS {LOGS} :- 
+
+-> kubectl logs <pod-name> -n <name-space name>
+-> kubectl logs -l name=<pod-name> -n <name-space name>
+-> kubectl logs <pod-name> --previous 
+-> kubectl logs <pod-name> -c <container-name>
+-> kubectl logs <pod-name> -c <container-name> --previous
+-> kubectl logs deploy/<deployment-name> -n <name-space name>
+-> kubectl logs deploy/<deployment-name> -c <container-name> 
+======================================================================
+
+-> kubectl exec -it <pod-name>
+-> kubectl exec -it deploy/<deployment-name> --ls
+======================================================================
+
+-> kubectl attach <pod-name> -i  #Running container attaching pod to container 
+======================================================================
+
+-> kubectl run ngnix --image=ngnix -n <name-space name>
+
+CREATING OBJECTS :-
+
+-> kubectl apply -f ./<file-name>.yaml
+-> kubectl apply -f ./<file-name-1>.yaml -f ./<file-name-2>.yaml
+-> kubectl apply -f ./dir
+-> kubectl apply -f ./https://<address> 
+-> kubectl apply -f <file-name>.yaml
+=======================================================================
+
+-> kubectl create deployment ngnix --image=ngnix
+-> kubectl create namespace <name-space name>
+
+EDITING :-
+
+-> kubectl edit pods <pod-name> -n <name-space name>
+-> kubectl edit nodes <node-name> -n <name-space name>
+-> kubectl edit services <service-name> -n <name-space name>
+-> kubectl edit deployments <deployment-name> -n <name-space name>
+-> kubectl edit ingress <ingress-name> -n <name-space name>
+
+SCALING :- 
+
+-> kubectl scale --replicaset=3 rs/<file-name>  #Scaling a replicaset named "<file-name>" to 3
+-> kubectl scale --replicaset=5 -f <file-name>.yaml  #Scaling resource specified in "<file-name>.yaml" to 5
+-> kubectl scale --replicaset=3 rs/<file-name-1> rs/<file-name-2> rs/<file-name-3>  #Scaling multiple replica controllers named "<file-name-1>" "<file-name-2>" "<file-name-3>" to 3
+
+
+DELETING :-
+
+-> kubectl delete -f ./pod.json
+-> kubectl delete pod,service <pod-name> <service-name>
+-> kubectl -n <name-space name> delete pod,svc -all
+-> kubectl -n <name-space name> delete pod,svc <pod-name> <service-name>
+-> kubectl delete pod,services -l name=<name-space>
+
+
