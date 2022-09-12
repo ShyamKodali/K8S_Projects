@@ -30,7 +30,7 @@ INTERACTING WITH RUNNING PODS {LOGS} :-
 -> kubectl logs deploy/<deployment-name> -c <container-name> 
 ======================================================================
 
--> kubectl exec -it <pod-name>
+-> kubectl exec -it <pod-name>  # -it = Interactive Terminal
 -> kubectl exec -it deploy/<deployment-name> --ls
 ======================================================================
 
